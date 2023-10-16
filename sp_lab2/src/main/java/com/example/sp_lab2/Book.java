@@ -7,7 +7,6 @@ public class Book {
     private String title;
     private Author author;
     private List<Chapter> chapters;
-
     public Book(String title){
         this.title = title;
         this.chapters = new ArrayList<>();
@@ -24,7 +23,6 @@ public class Book {
     public Chapter getChapter(int index){
         return chapters.get(index);
     }
-
     public void print(){
         System.out.println("Title: "+title);
         if(author != null){
