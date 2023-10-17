@@ -6,22 +6,20 @@ import java.util.List;
 public class Book {
     private String title;
     private Author author;
-    private List<Chapter> chapters;
+    private List<Element> content;
     public Book(String title){
         this.title = title;
-        this.chapters = new ArrayList<>();
+        this.content = new ArrayList<>();
     }
 
     public void addAuthor(Author author){
         this.author = author;
     }
-    public int addChapter(String chapterTitle){
-        Chapter chapter = new Chapter(chapterTitle);
-        this.chapters.add(chapter);
-        return chapters.indexOf(chapter);
+    public void addContent(Element element){
+        this.content.add(element);
     }
-    public Chapter getChapter(int index){
-        return chapters.get(index);
+    public Element getContent(int index){
+        return content.get(index);
     }
     public void print(){
         System.out.println("Title: "+title);
@@ -30,8 +28,8 @@ public class Book {
         }
         else
             System.out.print("Author unspecified");
-        for(Chapter ch:chapters){
-            ch.print();
+        for(Element element:content){
+            element.print();
         }
     }
 }
