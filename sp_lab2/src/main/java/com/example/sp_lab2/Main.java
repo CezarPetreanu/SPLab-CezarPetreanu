@@ -4,12 +4,23 @@ import org.springframework.boot.SpringApplication;
 
 public class Main {
     public static void main(String[] args) {
-        Book book1 = new Book("Book 1");
-        book1.addAuthor(new Author("A. Thor"));
-        int indexCh1 = book1.addChapter("Chapter 1");
-        Chapter ch1 = book1.getChapter(indexCh1);
-        int indexCh2 = book1.addChapter("Chapter 2");
-        Chapter ch2 = book1.getChapter(indexCh2);
-        book1.print();
+        Book noapteBuna = new Book("Noapte buna, copii!");
+        Author rpGheo = new Author("Radu Pavel Gheo");
+        noapteBuna.addAuthor(rpGheo);
+        Section cap1 = new Section("Capitolul 1");
+        Section cap11 = new Section("Capitolul 1.1");
+        Section cap111 = new Section("Capitolul 1.1.1");
+        Section cap1111 = new Section("Subchapter 1.1.1.1");
+        noapteBuna.addContent(new Paragraph("Multumesc celor care ..."));
+        noapteBuna.addContent(cap1);
+        cap1.addContent(new Paragraph("Moto capitol"));
+        cap1.addContent(cap11);
+        cap11.addContent(new Paragraph("Text from subchapter 1.1"));
+
+        cap11.addContent(cap111);
+        cap111.addContent(new Paragraph("Text from subchapter 1.1.1"));
+        cap111.addContent(cap1111);
+        cap1111.addContent(new Image("Image subchapter 1.1.1.1"));
+        noapteBuna.print();
     }
 }

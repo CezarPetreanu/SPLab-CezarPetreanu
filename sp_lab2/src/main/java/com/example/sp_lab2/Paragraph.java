@@ -1,11 +1,26 @@
 package com.example.sp_lab2;
 
-public class Paragraph extends Element{
+import java.util.ArrayList;
+import java.util.List;
+
+public class Paragraph implements Element{
     private String text;
-    public Paragraph(String text){
-        this.text = text;
+    private List<Element> content;
+    public Paragraph(String name){
+        this.text = name;
+        this.content = new ArrayList<>();
     }
+    public void addContent(Element element){
+        this.content.add(element);
+    }
+    public Element getContent(int index){
+        return content.get(index);
+    }
+    public void removeContent(Element element){content.remove(element);}
     public void print(){
-        System.out.println(text);
+        System.out.println("Paragraph: " + text);
+        for(Element element:content){
+            element.print();
+        }
     }
 }
