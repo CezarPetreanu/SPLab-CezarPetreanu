@@ -1,5 +1,7 @@
 package com.example.sp_lab2;
 
+import java.util.List;
+
 public interface Element {
     public void print();
     public void addContent(Element element);

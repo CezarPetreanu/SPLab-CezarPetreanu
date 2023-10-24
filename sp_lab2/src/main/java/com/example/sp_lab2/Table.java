@@ -19,8 +19,9 @@ public class Table implements Element{
     public void removeContent(Element element){content.remove(element);}
     public void print(){
         System.out.println("Table: " + title);
-        for(Element element:content){
-            element.print();
-        }
+        if(!content.isEmpty())
+            for(Element element:content){
+                element.print();
+            }
     }
 }

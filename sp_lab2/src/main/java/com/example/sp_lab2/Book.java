@@ -28,8 +28,9 @@ public class Book {
         }
         else
             System.out.print("Author unspecified");
-        for(Element element:content){
-            element.print();
-        }
+        if(!content.isEmpty())
+            for(Element element:content){
+                element.print();
+            }
     }
 }
