@@ -19,8 +19,9 @@ public class TableOfContents implements Element{
     public void removeContent(Element element){content.remove(element);}
     public void print(){
         System.out.println("TableOfContents: " + title);
-        for(Element element:content){
-            element.print();
-        }
+        if(!content.isEmpty())
+            for(Element element:content){
+                element.print();
+            }
     }
 }
