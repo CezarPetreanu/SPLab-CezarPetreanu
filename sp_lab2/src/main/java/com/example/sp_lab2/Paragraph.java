@@ -24,8 +24,9 @@ public class Paragraph implements Element{
     }
     public void print(){
         if(alignment != null)
-            alignment.render();
-        System.out.println("Paragraph: " + text);
+            alignment.render(this.text);
+        else
+            System.out.println("Paragraph: " + text);
         if(!content.isEmpty())
             for(Element element:content){
                 element.print();
