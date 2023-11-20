@@ -1,4 +1,4 @@
-package com.example.sp_lab2;
+package com.example.sp_lab2.models;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +22,7 @@ public class Image implements Element{
     public Element getContent(int index){
         return content.get(index);
     }
+
     public void removeContent(Element element){content.remove(element);}
     public void print(){
         System.out.println("Image: " + url);
@@ -29,5 +30,8 @@ public class Image implements Element{
             for(Element element:content){
                 element.print();
             }
+    }
+    public void accept(Visitor visitor){
+        visitor.visitImage(this);
     }
 }

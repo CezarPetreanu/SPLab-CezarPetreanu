@@ -1,12 +1,12 @@
-package com.example.sp_lab2;
+package com.example.sp_lab2.models;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Table implements Element{
+public class TableOfContents implements Element{
     private String title;
     private List<Element> content;
-    public Table(String title) {
+    public TableOfContents(String title) {
         this.title = title;
         this.content = new ArrayList<>();
     }
@@ -17,11 +17,15 @@ public class Table implements Element{
         return content.get(index);
     }
     public void removeContent(Element element){content.remove(element);}
+
     public void print(){
-        System.out.println("Table: " + title);
+        System.out.println("TableOfContents: " + title);
         if(!content.isEmpty())
             for(Element element:content){
                 element.print();
             }
+    }
+    public void accept(Visitor visitor){
+        visitor.visitTableOfContents(this);
     }
 }

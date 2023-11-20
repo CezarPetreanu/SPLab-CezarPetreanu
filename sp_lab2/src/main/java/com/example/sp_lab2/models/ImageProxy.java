@@ -1,6 +1,5 @@
-package com.example.sp_lab2;
+package com.example.sp_lab2.models;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,10 +27,12 @@ public class ImageProxy implements Element{
         return realImg;
     }
 
+
     public void addContent(Element element){ this.content.add(element); }
     public Element getContent(int index){
         return content.get(index);
     }
+
     public void removeContent(Element element){content.remove(element);}
     public void print(){
         System.out.println("ImageProxy: " + url);
@@ -39,5 +40,8 @@ public class ImageProxy implements Element{
             for(Element element:content){
                 element.print();
             }
+    }
+    public void accept(Visitor visitor){
+        visitor.visitImageProxy(this);
     }
 }

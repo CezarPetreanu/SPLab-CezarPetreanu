@@ -1,4 +1,4 @@
-package com.example.sp_lab2;
+package com.example.sp_lab2.models;
 
 public class Author {
     private String name;

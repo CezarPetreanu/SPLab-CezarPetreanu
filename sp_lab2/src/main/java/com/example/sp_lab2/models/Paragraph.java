@@ -1,4 +1,6 @@
-package com.example.sp_lab2;
+package com.example.sp_lab2.models;
+
+import com.example.sp_lab2.services.AlignStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +20,7 @@ public class Paragraph implements Element{
     public Element getContent(int index){
         return content.get(index);
     }
+
     public void removeContent(Element element){content.remove(element);}
     public void setAlignStrategy(AlignStrategy newAlignment){
         this.alignment = newAlignment;
@@ -31,5 +34,8 @@ public class Paragraph implements Element{
             for(Element element:content){
                 element.print();
             }
+    }
+    public void accept(Visitor visitor){
+        visitor.visitParagraph(this);
     }
 }

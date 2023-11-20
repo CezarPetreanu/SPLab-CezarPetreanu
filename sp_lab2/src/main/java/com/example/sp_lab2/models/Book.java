@@ -1,4 +1,4 @@
-package com.example.sp_lab2;
+package com.example.sp_lab2.models;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,5 +32,8 @@ public class Book {
             for(Element element:content){
                 element.print();
             }
+    }
+    public void accept(Visitor visitor){
+        visitor.visitBook(this);
     }
 }
