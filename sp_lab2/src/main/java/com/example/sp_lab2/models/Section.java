@@ -1,35 +1,43 @@
-package com.example.sp_lab2;
+package com.example.sp_lab2.models;
+
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Paragraph implements Element{
-    private String text;
+@Entity
+public class Section implements Element{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    @OneToMany(targetEntity = BaseElement.class)
     private List<Element> content;
-    private AlignStrategy alignment;
-    public Paragraph(String name){
-        this.text = name;
+    public Section(String name){
+        this.name = name;
         this.content = new ArrayList<>();
-        alignment = null;
     }
+
+    public Section() {
+
+    }
+
     public void addContent(Element element){
         this.content.add(element);
     }
     public Element getContent(int index){
         return content.get(index);
     }
+
     public void removeContent(Element element){content.remove(element);}
-    public void setAlignStrategy(AlignStrategy newAlignment){
-        this.alignment = newAlignment;
-    }
     public void print(){
-        if(alignment != null)
-            alignment.render(this.text);
-        else
-            System.out.println("Paragraph: " + text);
+        System.out.println(name);
         if(!content.isEmpty())
             for(Element element:content){
                 element.print();
             }
+    }
+    public void accept(Visitor visitor){
+        visitor.visitSection(this);
     }
 }
