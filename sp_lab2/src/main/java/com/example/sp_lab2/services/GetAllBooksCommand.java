@@ -3,11 +3,14 @@ import com.example.sp_lab2.models.Book;
 import java.util.List;
 
 public class GetAllBooksCommand implements Command<List<Book>>{
-    BookService context;
-    public GetAllBooksCommand(BookService context) {
-        this.context = context;
+    private final BookService bookService;
+
+    public GetAllBooksCommand(BookService booksService) {
+        this.bookService = booksService;
     }
+
+    @Override
     public List<Book> execute() {
-        return context.getBooks();
+        return bookService.getAllBooks();
     }
 }

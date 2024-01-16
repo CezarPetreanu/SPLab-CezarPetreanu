@@ -1,12 +1,20 @@
 package com.example.sp_lab2.models;
 
+import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class ImageProxy implements Element{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String url;
+    @OneToMany(targetEntity = BaseElement.class)
     private List<Element> content;
     //private Dimension dim;
+    @Transient
     private Image realImg;
 
     /*
@@ -20,6 +28,11 @@ public class ImageProxy implements Element{
         this.content = new ArrayList<>();
         this.realImg = null;
     }
+
+    public ImageProxy() {
+
+    }
+
     public Image loadImage(){
         if(realImg == null){
             realImg = new Image(url);

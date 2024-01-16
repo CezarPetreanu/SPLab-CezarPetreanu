@@ -1,16 +1,17 @@
 package com.example.sp_lab2.services;
 
 public class DeleteBookCommand implements Command<Void>{
-    BookService context;
-    int id;
-    public DeleteBookCommand(BookService context) {
-        this.context = context;
+    private final BookService bookService;
+    private final Long bookId;
+
+    public DeleteBookCommand(BookService bookService, Long bookId) {
+        this.bookService = bookService;
+        this.bookId = bookId;
     }
+
+    @Override
     public Void execute() {
-        context.deleteBook(id);
+        bookService.deleteBook(bookId);
         return null;
-    }
-    public void setArgs(int id) {
-        this.id = id;
     }
 }

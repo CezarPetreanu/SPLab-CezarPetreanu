@@ -3,13 +3,22 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Book {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String title;
+    @OneToOne
     private Author author;
+    @OneToMany(targetEntity = BaseElement.class)
     private List<Element> content;
     public Book(String title){
         this.title = title;
         this.content = new ArrayList<>();
+    }
+    public Book() {
+
     }
 
     public void addAuthor(Author author){

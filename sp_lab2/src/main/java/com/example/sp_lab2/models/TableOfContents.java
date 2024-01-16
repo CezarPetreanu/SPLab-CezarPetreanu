@@ -1,15 +1,27 @@
 package com.example.sp_lab2.models;
 
+import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class TableOfContents implements Element{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String title;
+    @OneToMany(targetEntity = BaseElement.class)
     private List<Element> content;
     public TableOfContents(String title) {
         this.title = title;
         this.content = new ArrayList<>();
     }
+
+    public TableOfContents() {
+
+    }
+
     public void addContent(Element element){
         this.content.add(element);
     }

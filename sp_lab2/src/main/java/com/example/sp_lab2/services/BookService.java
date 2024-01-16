@@ -10,28 +10,34 @@ import java.util.Map;
 
 @Service
 public class BookService {
-    private final Map<Integer, Book> books = new HashMap<>();
-    private int nextId = 1;
+    private final Map<Long, Book> books = new HashMap<>();
+    private Long nextId = 1L;
     public Book createBook(Book bookData) {
-        int bookId = getNextId();
+        Long bookId = getNextId();
         books.put(bookId, bookData);
         return books.get(bookId);
     }
     public List<Book> getBooks() {
         return new ArrayList<>(books.values());
     }
-    public Book getBookById(int bookId) {
+    public Book getBookById(Long bookId) {
         return books.get(bookId);
     }
-    public void updateBook(int bookId, Book updatedBookData) {
+    public Book updateBook(Long bookId, Book updatedBookData) {
         if (books.containsKey(bookId)) {
             books.put(bookId, updatedBookData);
         }
+        return updatedBookData;
     }
-    public void deleteBook(int bookId) {
+    public void deleteBook(Long bookId) {
         books.remove(bookId);
     }
-    private synchronized int getNextId() {
+
+    public List<Book> getAllBooks() {
+        return new ArrayList<>(books.values());
+    }
+
+    private synchronized Long getNextId() {
         return nextId++;
     }
 }

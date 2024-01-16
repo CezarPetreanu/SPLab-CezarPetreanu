@@ -1,11 +1,18 @@
 package com.example.sp_lab2.models;
 
+import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+@Entity
 public class Image implements Element{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String url;
+    @OneToMany(targetEntity = BaseElement.class)
     private List<Element> content;
     public Image(String url){
         this.url = url;
@@ -18,6 +25,11 @@ public class Image implements Element{
             throw new RuntimeException(e);
         }
     }
+
+    public Image() {
+
+    }
+
     public void addContent(Element element){ this.content.add(element); }
     public Element getContent(int index){
         return content.get(index);
